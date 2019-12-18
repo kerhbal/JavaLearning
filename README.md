@@ -1,6 +1,6 @@
 # JavaLearning
 
-This repository contains several projects I created when I learnt Java.
+This repository contains several projects I created during the study of Java.
 
 ## ChessGame.java
 A chess game of two players
