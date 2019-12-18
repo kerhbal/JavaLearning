@@ -11,9 +11,9 @@ public class ChessGame {
     String[][] board = new String[size][size];
     public void run() {
         Scanner input = new Scanner(System.in);
-        System.out.println("输入黑棋昵称");
+        System.out.println("Please input player1's nickname");
         String name1 = input.next();
-        System.out.println("输入白棋昵称");
+        System.out.println("Please input player2's nickname");
         String name2 = input.next();
 
         game(name1, name2);
