@@ -27,7 +27,7 @@ Tom win!
 ```
 
 ## Game1024
-Just like the original one, only the input of control need to be "W", "S", "A", "D".
+Just like the original one, only the input of control changed to "W", "S", "A", "D".
 
 When max number's digits changes, space between each number will change accordingly for smooth viewing.
 ```$xslt
