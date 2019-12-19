@@ -24,9 +24,6 @@ public class Game1024 {
             }
             //moveNumbers + combine
             moveNumbers();
-
-
-           // break;
         }
 
 
@@ -210,8 +207,6 @@ public class Game1024 {
                 }
             }
         }
-
-
         round++;
     }
 }
