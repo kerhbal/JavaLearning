@@ -25,3 +25,22 @@ N  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
 Tom win!
 ```
+
+## Game1024
+Just like the original one, only the input of control need to be "W", "S", "A", "D".
+
+When max number's digits changes, space between each number will change accordingly for smooth viewing.
+```$xslt
+Score : 756
+64  .   .   .   
+64  2   .   2   
+16  4   2   4   
+4   2   1   2   
+Please make your move:
+W
+Score : 884
+128  2    2    2    
+16   4    1    4    
+4    2    .    2    
+.    .    1    .  
+```
