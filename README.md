@@ -29,7 +29,7 @@ Tom win!
 ## Game1024
 Just like the original one, only the input of control changed to "W", "S", "A", "D".
 
-When max number's digits changes, space between each number will change accordingly for smooth viewing.
+When number of digits of the largest number changes, all spaces between the numbers will adjust accordingly for smooth viewing.
 ```$xslt
 Score : 756
 64  .   .   .   
