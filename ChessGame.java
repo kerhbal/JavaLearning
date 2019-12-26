@@ -91,11 +91,14 @@ public class ChessGame {
         Scanner input = new Scanner(System.in);
         int[] target = new int[2];
         String myInput = input.next();
-        target[0] = myInput.charAt(0) - 'A' + 1;
 
-        if (myInput.length() < 2) {//eg: if A12
+        if (myInput.length() < 2) {
             return null;
         }
+
+        target[0] = myInput.charAt(0) - 'A' + 1;
+
+
         target[1] = Integer.parseInt(myInput.substring(1));
         return target;
     }
