@@ -83,7 +83,7 @@ public class Game1024 {
             boolean noSameLeft = (randomX - 1 < 0) || (board[randomY][randomX] != board[randomY][randomX - 1]);
             boolean noSameRight = (randomX + 1 >= size) || (board[randomY][randomX] != board[randomY][randomX + 1]);
             lose = noSameDown && noSameUp && noSameLeft && noSameRight;
-            }
+
         }
     }
 
