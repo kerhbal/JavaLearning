@@ -33,12 +33,14 @@ public class Game1024 {
     public void randomNumbers() {
         generateRandom();
         if (round == 0) {//2 numbers at round 0
-            generateRandom();
+            int[] randomDetail = generateRandom();
+            checkLose(randomDetail);
         }
     }
 
-    public void generateRandom() {
+    public int[] generateRandom() {
         int randomValue, randomY, randomX;
+        int[] randomDetail = new int[2];
         do {//at this point no chance to fall into dead loop
             //there will be lose check at the end of this function
             randomY = new Random().nextInt(size);
@@ -46,10 +48,17 @@ public class Game1024 {
         } while (board[randomY][randomX] != 0);//occupied
         randomValue = new Random().nextInt(2) + 1;
         board[randomY][randomX] = randomValue;
+        randomDetail[0] = randomY;
+        randomDetail[1] = randomX;
+        return randomDetail;
+    }
 
+    public void checkLose(int[] randomDetail) {
         //check lose
         //1. after filling this number there is no extra space
         //2. neighbours from horizontal and vertical are not this number
+        int randomY = randomDetail[0];
+        int randomX = randomDetail[1];
         boolean noZero = true;
         int test;
         for (int y = 0; y < size; y++) {
@@ -73,8 +82,7 @@ public class Game1024 {
             boolean noSameUp = (randomY - 1 < 0) || (board[randomY][randomX] != board[randomY - 1][randomX]);
             boolean noSameLeft = (randomX - 1 < 0) || (board[randomY][randomX] != board[randomY][randomX - 1]);
             boolean noSameRight = (randomX + 1 >= size) || (board[randomY][randomX] != board[randomY][randomX + 1]);
-            if (noSameDown && noSameUp && noSameLeft && noSameRight) {
-                lose = true;
+            lose = noSameDown && noSameUp && noSameLeft && noSameRight;
             }
         }
     }

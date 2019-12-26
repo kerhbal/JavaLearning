@@ -20,36 +20,34 @@ public class ChessGame {
     public void game(String player1, String player2) {
         board = generateBoard();
         boolean isPlayer1Next = true;
+        String winner;
         while (true) {
             showBoard();
-            String who;
-            if (isPlayer1Next) {
-                who = player1;
-            } else {
-                who = player2;
-            }
+            String who = isPlayer1Next ? player1 : player2;
             System.out.println("It's " + who + "'s turn");
 
             int[] target = {0, 0};
             //if error or target is occupied
-            do {
+            while (true) {
                 target = getTarget();
+                if (findError(target)) {
+                    System.out.println("错误，请重新落子");
+                    continue;
+                }
+                break;
             }
-            while (findError(target));
 
             isPlayer1Next = !isPlayer1Next;
             board = updateBoard(target, isPlayer1Next);
-            String winner = checkWin();
-            if (winner.equals("x")) {
-                showBoard();
-                System.out.println(player1 + " win!");
-                return;
-            } else if (winner.equals("o")) {
-                showBoard();
-                System.out.println(player2 + " win!");
-                return;
+
+            winner = checkWin();
+            if (winner != null) {
+                break;
             }
         }
+        showBoard();
+        String winnerName = winner.equals("x") ? player1 : player2;
+        System.out.println(winnerName + " win!");
     }
 
     public String[][] generateBoard() {
@@ -95,13 +93,10 @@ public class ChessGame {
         String myInput = input.next();
         target[0] = myInput.charAt(0) - 'A' + 1;
 
-        if (myInput.length() > 2) {//eg: if A12
-            target[1] = Integer.parseInt(myInput.substring(1,3));
-        } else if (myInput.length() < 2) {//error
-            return new int[]{0, 0};
-        } else {
-            target[1] = myInput.charAt(1) - '0';
+        if (myInput.length() < 2) {//eg: if A12
+            return null;
         }
+        target[1] = Integer.parseInt(myInput.substring(1));
         return target;
     }
 
@@ -125,12 +120,7 @@ public class ChessGame {
     }
 
     public String[][] updateBoard(int[] target, boolean isPlayer1Next) {
-        if (isPlayer1Next == false) {
-            board[target[0]][target[1]] = "x";
-        } else {
-            board[target[0]][target[1]] = "o";
-        }
-
+        board[target[0]][target[1]] = !isPlayer1Next ? "x" : "o";
         return board;
     }
 
@@ -251,6 +241,6 @@ public class ChessGame {
             }
         }
 
-        return " ";
+        return null;
     }
 }
