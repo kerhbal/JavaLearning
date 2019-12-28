@@ -133,7 +133,7 @@ public class MineSweeper {
         int[] target = new int[3];
         while (true) {
             Scanner input = new Scanner(System.in);
-            String targetInput = input.next();
+            String targetInput = input.nextLine();
             if (targetInput.length() >= 4) {
                 if (targetInput.charAt(0) == 'O') {
                     target[0] = 1;
