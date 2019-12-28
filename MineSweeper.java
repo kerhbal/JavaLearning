@@ -34,7 +34,7 @@ public class MineSweeper {
 
             mine[mineCount] = random;
         }
-        
+
         //put those mines in the mineField
         for (int i = 0; i < mineSize; i++) {
             int row = mine[i] / size;
@@ -166,10 +166,6 @@ public class MineSweeper {
         //mineField:
         //first digit means if there is mine at target position, 1 means there is mine
         //second digit means how many mines around target position
-        //(deleted, not used)frontBoard:
-        //third digit means if target position is in original state
-        //forth digit means if target position is flagged
-        //fifth digit means how many flags around target position
         int[] checkMineResult = new int[2];
         //check the target position and around
         for (int i = -1; i < 2; i++) { // -1, 0, 1
@@ -182,19 +178,6 @@ public class MineSweeper {
                         checkMineResult[1]++;
                     }
                 }
-
-//                //check if target position is in original state in the frontBoard
-//                if (frontBoard[targetY][targetX] == 0) {
-//                    checkResult[2] = 1;
-//                }
-//                //check if there is flag at and around the target in the frontBoard
-//                if (targetY + i >= 0 && targetX + j >= 0 && targetY + i < size && targetX + j < size && frontBoard[targetY + i][targetX + j] == 10) {
-//                    if (i == 0 && j == 0) {//target position
-//                        checkResult[3] = 1;
-//                    } else {//around target position
-//                        checkResult[4]++;
-//                    }
-//                }
             }
         }
         return checkMineResult;
