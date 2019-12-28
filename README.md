@@ -77,3 +77,53 @@ G  .  .  .  .  .  .  .  .
 H  .  .  .  .  .  .  .  . 
 It's White's turn
 ```
+
+## MineSweeper
+A typical mine sweeper game with three method to interact with. 
+
+The first one `O A1` means open block `A1`, and if there is a mine, game over; If there is no mine in the target block, a number will appear to show how many mines around; And if there is no mine in and around the target block, a field of empty space will spread until there is number shows mine counts around.
+
+The second one `F A1` means flagged block `A1`. Flagged block cannot be opened until removal of the flag, which uses the same command `F`.
+
+The third one is `R A1` means open the remaining blocks around `A1`. This happens when both conditions apply:
+
+1. Target was opened before and shows the number of surrounding mines, also there are flags around the target.
+2. The count of flags and the number shows by the target is equal.
+
+Once `R A1` is received and above conditions are true, all blocks left around the target except flags will be opened instantly, and if any flag was marked at wrong place, game over. 
+
+```$xslt
+10 mines left
+    1  2  3  4  5  6  7  8  
+A   .  .  .  .  .  .  .  .  
+B   .  .  .  .  .  .  .  .  
+C   .  .  .  .  .  .  .  .  
+D   .  .  .  .  .  .  .  .  
+E   .  .  .  .  .  .  .  .  
+F   .  .  .  .  .  .  .  .  
+G   .  .  .  .  .  .  .  .  
+H   .  .  .  .  .  .  .  .  
+O A1
+10 mines left
+    1  2  3  4  5  6  7  8  
+A                           
+B      1  1  1     1  1  1  
+C   1  2  .  1     1  .  .  
+D   .  .  .  2     2  .  .  
+E   .  .  .  2  1  2  .  .  
+F   .  .  .  .  .  .  .  .  
+G   .  .  .  .  .  .  .  .  
+H   .  .  .  .  .  .  .  .  
+O D2
+10 mines left
+    1  2  3  4  5  6  7  8  
+A                           
+B      1  1  1     1  1  1  
+C   1  2  *  1     1  *  .  
+D   .  *  .  2     2  .  .  
+E   *  .  *  2  1  2  *  *  
+F   .  .  .  .  *  .  .  .  
+G   .  .  .  .  .  .  .  .  
+H   *  .  .  .  .  .  .  *  
+BOOM!
+```
