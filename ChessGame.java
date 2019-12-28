@@ -31,7 +31,7 @@ public class ChessGame {
             while (true) {
                 target = getTarget();
                 if (findError(target)) {
-                    System.out.println("错误，请重新落子");
+                    System.out.println("Error, please try again!");
                     continue;
                 }
                 break;
@@ -39,15 +39,15 @@ public class ChessGame {
 
             isPlayer1Next = !isPlayer1Next;
             board = updateBoard(target, isPlayer1Next);
+            String whoMoved = isPlayer1Next ? player2 : player1;
+            winner = checkWinV2(target) ? whoMoved : null;
 
-            winner = checkWin();
             if (winner != null) {
                 break;
             }
         }
         showBoard();
-        String winnerName = winner.equals("x") ? player1 : player2;
-        System.out.println(winnerName + " win!");
+        System.out.println(winner + " win!");
     }
 
     public String[][] generateBoard() {
@@ -127,123 +127,46 @@ public class ChessGame {
         return board;
     }
 
-    public String checkWin() {
+
+    public boolean checkWinV2(int[] target) {
+        int[][] directions = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}};
+        for (int i = 0; i < directions.length; i++) {
+            int[] direction = directions[i];
+            if(overFiveByDirection(target[0], target[1], direction[1], direction[0])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean overFiveByDirection(int targetY, int targetX, int dy, int dx) {
         int count = 0;
-        //horizontal
-        for (int i = 1; i < size; i++) {
-            for (int j = 1; j < size; j++) {
-                if (!board[i][j].equals(".")) {
-                    if (board[i][j].equals(board[i][j - 1])) {
-                        count++;
-                        if (count == 4) {
-                            return board[i][j];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
-            }
+        count += countOnDirection(targetY, targetX, dy, dx);
+        count += countOnDirection(targetY, targetX, -dy, -dx);
+        count --;
+        if (count >= 5) {
+            return true;
+        } else {
+            return false;
         }
-        //vertical
-        for (int j = 1; j < size; j++) {
-            for (int i = 1; i < size; i++) {
-                if (!board[i][j].equals(".")) {
-                    if (board[i][j].equals(board[i - 1][j])) {
-                        count++;
-                        if (count == 4) {
-                            return board[i][j];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
-            }
-        }
-        /*
-        here x means where to look up
-        x  .  .    .  x  .
-        .  x  . -> .  .  x
-        .  .  x    .  .  .
-        i: [1, size - 4)
-        j: [1, size - 1]
-        k: [i, size)
-         */
-        for (int i = 1; i < size - 4; i++) {
-            for (int j = 1, k = i; j <=  size - i  && k < size; j++, k++) {
-                if (!board[j][k].equals(".")) {
-                    if (board[j][k].equals(board[j - 1][k - 1])) {
-                        count++;
-                        if (count == 4) {
-                            return board[j][k];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
-            }
-        }
-        /*
-        here x means where to look up
-        x  .  .    .  .  .
-        .  x  . -> x  .  .
-        .  .  x    .  x  .
-         */
-        for (int i = 1; i < size - 4; i++) {
-            for (int j = i, k = 1; j < size && k <= size - i; j++, k++) {
-                if (!board[j][k].equals(".")) {
-                    if (board[j][k].equals(board[j - 1][k - 1])) {
-                        count++;
-                        if (count == 4) {
-                            return board[j][k];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
-            }
-        }
+    }
 
-        /*
-        here x means where to look up
-        .  x  .    .  .  x
-        x  .  . -> .  x  .
-        .  .  .    x  .  .
-         */
-        for (int i = 5; i < size; i++) {
-            for (int j = 1, k = i; j <= i && k >= 1; j++, k--) {
-                if (!board[j][k].equals(".")) {
-                    if (board[j][k].equals(board[j - 1][k + 1])) {
-                        count++;
-                        if (count == 4) {
-                            return board[j][k];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
+    public int countOnDirection(int y, int x, int dy, int dx) {
+        int count = 1;
+        String reference = board[y][x];
+        while(true) {
+            y += dy;
+            x += dx;
+            if (!(y > 0 && x > 0 && y < size && x < size)) {
+                break;
+            }
+            if (board[y][x].equals(reference)) {
+                count++;
+            }
+            else {
+                break;
             }
         }
-        /*
-        here x means where to look up
-        .  .  x    .  .  .
-        .  x  . -> .  .  x
-        x  .  .    .  x  .
-         */
-        for (int i = 1; i < size - 5; i++) {
-            for (int j = size - 1, k = i; j >= i && k < size; j--, k++) {
-                if (!board[i][j].equals(".")) {
-                    if (board[i][j].equals(board[i - 1][j - 1])) {
-                        count++;
-                        if (count == 4) {
-                            return board[i][j];
-                        }
-                    } else {
-                        count = 0;
-                    }
-                }
-            }
-        }
-
-        return null;
+        return count;
     }
 }
