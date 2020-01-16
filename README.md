@@ -2,8 +2,8 @@
 
 This repository contains several projects I created during the study of Java.
 
-## ChessGame.java
-A chess game of two players.
+## ChessGame.java & ChessGameObjectOriented
+A chess game of two players. ChessGameObjectOriented is the OO version.
 
 Once 5 pieces of same player construct a continuous line, that player wins.
 ```
@@ -23,7 +23,7 @@ L  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 M  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
 N  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
 O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
-Tom win!
+Tom wins!
 ```
 
 ## Game1024
