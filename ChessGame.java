@@ -1,3 +1,4 @@
+package JavaLearning;
 import java.util.Scanner;
 
 
@@ -47,7 +48,7 @@ public class ChessGame {
             }
         }
         showBoard();
-        System.out.println(winner + " win!");
+        System.out.println(winner + " wins!");
     }
 
     public String[][] generateBoard() {
