@@ -2,8 +2,82 @@
 
 This repository contains several projects I created using Java.
 
-## ChessGame & ChessGameObjectOriented
-A chess game of two players. ChessGameObjectOriented is the OO version.
+## Convenience Store
+A store management system which contains two parts: warehouse section and sale section
+```
+1.  Warehouse
+2.  Sale
+0.  Exit
+```
+### Warehouse section
+In warehouse section, users can search, carry in and carry out items from/to warehouse.
+```
+1.  Search
+2.  Carry In
+3.  Carry Out
+0.  Return
+```
+For example, search can be done by id and name:
+```
+What do you want to search?
+16
+| id     | Category | Name       | Price | Quantity | 
+| 000016 | fruits   | Watermelon |  6.11 | 12       | 
+| 000012 | xxx      | APC16      | 12.62 | 1        | 
+| 000027 | xxx      | CMA316     |  2.30 | 900      | 
+1. Search again
+0. Return
+```
+### Sale section
+In sale section, users can interact with shopping cart and checkout with or without coupon
+```
+1.  Browse shopping cart
+2.  Add item to shopping cart
+3.  Remove item from shopping cart
+4.  Coupons
+5.  Checkout
+0.  Return
+```
+Available coupons:
+There are various types of coupons, each one can apply to all items or specific category.
+```
+Available Coupons
+-----------------
+| Code   | Name                               |
+| BLACKF | 50% off                            |
+| BOXING | The 3rd 50% off                    |
+| HAPPYE | Fruits , The 3rd 50% off           |
+| FRUITB | Fruits , Buy 2 Get 1 free          |
+| 1GRAPE | Fruits , Buy $100 Get 1 grape free |
+| 50--20 | Buy $50 Save $20                   |
+Current Coupon
+--------------
+| Code   | Name            |
+| BOXING | The 3rd 50% off |
+```
+Checkout:
+```
+------------------------------
+          Supermarket
+------------------------------
+000016 Watermelon         6.11 
+       X 13              79.43 
+       CP: BOXING        73.32 
+------------------------------
+BOXING
+The 3rd 50% off
+------------------------------
+Total                    79.43
+Discount                -6.11
+------------------------------
+Total                    73.32
+1. Confirm checkout
+0. Return
+```
+
+
+## ChessGame
+A chess game of two players.
 
 Once 5 pieces of same player construct a continuous line, that player wins.
 ```
@@ -50,7 +124,7 @@ A strategy board game for two players.
 
 During a play, any disks of the opponent's color that are in a straight line and bounded by the piece just placed and another piece of the current player's color are turned over to the current player's color.
 
-The object of the game is to have the majority of pieces turned to display your color when the last playable empty square is filled. 
+The objective of the game is to have the majority of pieces turned to display your color when the last playable empty square is filled. 
 
 ```$xslt
 Score: 2 : 2
