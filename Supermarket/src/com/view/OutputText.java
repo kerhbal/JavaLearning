@@ -3,7 +3,7 @@ package com.view;
 public class OutputText {
     public static void showMainMenu() {
         System.out.println("1.  Warehouse");
-        System.out.println("2.  Store");
+        System.out.println("2.  Sale");
         System.out.println("0.  Exit");
     }
 

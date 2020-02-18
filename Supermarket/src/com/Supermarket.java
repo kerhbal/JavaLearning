@@ -10,9 +10,9 @@ import com.view.OutputText;
 
 import java.util.LinkedList;
 
-public class Store {
+public class Supermarket {
     public static void main(String[] args) {
-        new Store().run(args);
+        new Supermarket().run(args);
     }
 
     public void run(String[] args) {
