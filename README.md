@@ -2,7 +2,7 @@
 
 This repository contains several projects I created using Java.
 
-## Convenience Store
+## Supermarket
 A store management system which contains two parts: warehouse section and sale section
 ```
 1.  Warehouse
