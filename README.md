@@ -1,6 +1,6 @@
-# JavaLearning
+# JavaProjects
 
-This repository contains several projects I created during the study of Java.
+This repository contains several projects I created using Java.
 
 ## ChessGame & ChessGameObjectOriented
 A chess game of two players. ChessGameObjectOriented is the OO version.
