@@ -9,7 +9,7 @@ A store management system which contains two parts: warehouse section and sale s
 2.  Sale
 0.  Exit
 ```
-### Warehouse section
+### Warehouse Section
 In warehouse section, users can search, carry in and carry out items from/to warehouse.
 ```
 1.  Search
@@ -28,7 +28,7 @@ What do you want to search?
 1. Search again
 0. Return
 ```
-### Sale section
+### Sale Section
 In sale section, users can interact with shopping cart and checkout with or without coupon
 ```
 1.  Browse shopping cart
