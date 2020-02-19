@@ -119,39 +119,6 @@ Score : 884
 .    .    1    .  
 ```
 
-## Reversi
-A strategy board game for two players.
-
-During a play, any disks of the opponent's color that are in a straight line and bounded by the piece just placed and another piece of the current player's color are turned over to the current player's color.
-
-The objective of the game is to have the majority of pieces turned to display your color when the last playable empty square is filled. 
-
-```$xslt
-Score: 2 : 2
-   1  2  3  4  5  6  7  8  
-A  .  .  .  .  .  .  .  .  
-B  .  .  .  .  .  .  .  .  
-C  .  .  .  .  .  .  .  .  
-D  .  .  .  o  x  .  .  .  
-E  .  .  .  x  o  .  .  .  
-F  .  .  .  .  .  .  .  .  
-G  .  .  .  .  .  .  .  .  
-H  .  .  .  .  .  .  .  .  
-It's Black's turn
-C4
-Score: 4 : 1
-   1  2  3  4  5  6  7  8  
-A  .  .  .  .  .  .  .  .  
-B  .  .  .  .  .  .  .  .  
-C  .  .  .  x  .  .  .  .  
-D  .  .  .  x  x  .  .  .  
-E  .  .  .  x  o  .  .  .  
-F  .  .  .  .  .  .  .  .  
-G  .  .  .  .  .  .  .  .  
-H  .  .  .  .  .  .  .  . 
-It's White's turn
-```
-
 ## MineSweeper
 A typical mine sweeper game with three method to interact with. 
 
