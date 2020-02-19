@@ -1,5 +1,3 @@
-package JavaLearning;
-
 import java.util.Scanner;
 
 public class Reversi {
